@@ -23,6 +23,11 @@ jobs:
       - name: Remove firefox
         run: sudo apt-get remove -y firefox || true
 
+      - name: Install Firefox
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y firefox
+
       - name: Firefox version
         run: firefox --version
 
