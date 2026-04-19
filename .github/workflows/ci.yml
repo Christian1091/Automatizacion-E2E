@@ -14,12 +14,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Show current commit
-        run: git rev-parse HEAD
-
-      - name: Show serenity.conf content
-        run: cat src/test/resources/serenity.conf || true
-
       - name: Setup JDK 17
         uses: actions/setup-java@v4
         with:
@@ -37,26 +31,14 @@ jobs:
       - name: Firefox version
         run: firefox --version
 
-      - name: Debug Firefox path
-        run: ls -l /usr/bin/firefox || true
-
-      - name: Debug full environment
-        run: |
-            echo "HEADLESS=$HEADLESS"
-            echo "webdriver.driver=$webdriver.driver"
-            mvn -q dependency:tree | grep serenity || true
-        env:
-          HEADLESS: "true"
-          webdriver.driver: "firefox"
-
-      #- name: Cache Maven dependencies
-        #  uses: actions/cache@v4
-          #with:
-          #path: ~/.m2
-        #key: maven-${{ hashFiles('**/pom.xml') }}
+      - name: Cache Maven dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.m2
+          key: maven-${{ hashFiles('**/pom.xml') }}
 
       - name: Run tests
-        run: mvn clean verify -q -Dwebdriver.driver=firefox -Dheadless.mode=true
+        run: mvn clean verify -Dwebdriver.driver=firefox -Dheadless.mode=true -q
 
       - name: Serenity Report
         uses: actions/upload-artifact@v4
