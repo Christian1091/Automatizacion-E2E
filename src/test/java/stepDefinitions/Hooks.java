@@ -8,8 +8,8 @@ import org.openqa.selenium.WebDriver;
 import static net.serenitybdd.screenplay.actors.OnStage.setTheStage;
 
 public class Hooks {
-    @Managed
-    WebDriver driver;
+    /*@Managed
+    WebDriver driver*/;
 
     @Before
     public void setUp() {
