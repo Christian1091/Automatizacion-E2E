@@ -20,6 +20,12 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
 
+      - name: Setup Firefox (stable)
+        uses: browser-actions/setup-firefox@v1
+
+      - name: Install dependencies
+        run: mvn clean install -DskipTests
+
       - name: Cache Maven dependencies
         uses: actions/cache@v4
         with:
@@ -27,9 +33,7 @@ jobs:
           key: maven-${{ hashFiles('**/pom.xml') }}
 
       - name: Run tests
-        run: mvn clean verify -Dwebdriver.driver=chrome -Dheadless.mode=true -q
-        env:
-          CHROME_DISABLE_PASSWORD_MANAGER: true
+        run: mvn clean verify -Dwebdriver.driver=firefox -Dheadless.mode=true -q
 
       - name: Serenity Report
         uses: actions/upload-artifact@v4
