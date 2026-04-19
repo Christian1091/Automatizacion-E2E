@@ -1,4 +1,4 @@
-name: Serenity Tests CI
+name: SerenityBDD Tests CI
 
 on:
   push:
@@ -20,7 +20,7 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
 
-      - name: Setup Firefox (stable)
+      - name: Setup Firefox
         uses: browser-actions/setup-firefox@v1
 
       - name: Install dependencies

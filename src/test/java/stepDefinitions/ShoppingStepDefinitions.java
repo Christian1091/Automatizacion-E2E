@@ -14,7 +14,7 @@ import static net.serenitybdd.screenplay.actors.OnStage.theActorCalled;
 import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
 import static org.hamcrest.Matchers.equalTo;
 
-public class LoginStepDefinitions {
+public class ShoppingStepDefinitions {
     private ReadCSV csv = new ReadCSV();
     String[] data = csv.loadCSV();
 
