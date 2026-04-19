@@ -14,6 +14,12 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Show current commit
+        run: git rev-parse HEAD
+
+      - name: Show serenity.conf content
+        run: cat src/test/resources/serenity.conf || true
+
       - name: Setup JDK 17
         uses: actions/setup-java@v4
         with:
@@ -34,8 +40,14 @@ jobs:
       - name: Debug Firefox path
         run: ls -l /usr/bin/firefox || true
 
-      - name: Cache Maven dependencies
-        uses: actions/cache@v4
+      - name: Debug full environment
+        run: |
+            echo "HEADLESS=$HEADLESS"
+            echo "webdriver.driver=$WEBDRIVER_DRIVER"
+            mvn -q dependency:tree | grep serenity || true
+
+      #- name: Cache Maven dependencies
+        #  uses: actions/cache@v4
         with:
           path: ~/.m2
           key: maven-${{ hashFiles('**/pom.xml') }}
