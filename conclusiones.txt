@@ -1,0 +1,23 @@
+Conclusiones - Hallazgos 
+
+Automatización E2E
+
+Hallazgos
+
+- Problemas con el Popup de Google despues del login.
+Durante la ejecución del flujo de pruebas con el driver de Chrome, el sistema interrumpía las pruebas debido a un popup de aviso sobre el gestor de credenciales de Google, lo que no permitía que las pruebas continuaran correctamente.
+- Solución a la Interrupción del Flow con el Popup.
+    * Se resolvió este inconveniente configurando el archivo serenity.conf para agregar opciones que permitieran ejecutar las pruebas de forma más flexible. La parametrización incluía: uso de Chrome o Firefox como navegadores.
+    * Activación/Desactivación del modo headless, permitiendo la ejecución interactiva localmente (para depuración) o desactivando este modo para correr de forma automática en CI.
+- Problemas con la Integración en CI con Firefox.
+    * El pipeline de integración continua (CI) fallaba al ejecutar las pruebas con Firefox debido a problemas de versiones no estables del navegador, lo cual ocasionaba errores durante la ejecución.
+    * La solución fue actualizar la configuración en el archivo yml con una versión estable de Firefox, lo que permitió que el flujo de pruebas se ejecutara correctamente.
+- Problemas con Dependencias Deprecadas.
+    * Las dependencias utilizadas para leer archivos CSV estaban deprecadas y causaban fallos al intentar ejecutarlas.
+    * Para solucionar esto, se actualizaron las dependencias a versiones más actuales que permitieron que el proceso de lectura de archivos CSV funcionara correctamente.
+
+Conclusiones
+
+Luego de resolver el ejercicio en las herramientas y framework solicitados puedo concluir que aunque el driver de Chrome presentó problemas con el popup de gestor de credenciales de Google, la solución con Firefox resultó ser efectiva y estable, especialmente al hacer ajustes en el archivo de configuración de CI (yml). De la misma manera, la actualización de dependencias es crucial para evitar problemas derivados de versiones obsoletas, como ocurrió con las librerías para la lectura de archivos CSV, asegurarse de trabajar con dependencias actualizadas mejora la estabilidad del proyecto y facilita su mantenimiento a largo plazo.
+
+La capacidad de parametrizar el archivo serenity.conf permitió adaptar el proyecto a distintas configuraciones de navegador y modo de ejecución (headless/no headless). Esto brinda mayor flexibilidad tanto para pruebas locales interactivas como para ejecuciones automáticas en CI, de la misma manera la implementación del modo headless desactivando para las pruebas locales interactivas y activado para las pruebas en CI es una estrategia eficiente para asegurar que las pruebas puedan ejecutarse sin interrupciones, adaptándose tanto a las necesidades de desarrollo como a las de integración continua.
