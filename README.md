@@ -23,13 +23,13 @@ java -version
 
 ## 2. Comandos de instalación
 
-Para instalar las dependencias necesarias en tu máquina local, sigue los pasos a continuación:
+Para instalar las dependencias necesarias en tu máquina local, seguir los pasos a continuación:
 
 **2.1 Clonar el repositorio**
 ```bash
 git clone https://github.com/Christian1091/Automatizacion-E2E.git
+cd Automatizacion-E2E
 ```
-- cd Automatizacion-E2E
 
 **2.2 Instalar dependencias del proyecto**
 ```bash
@@ -50,7 +50,9 @@ mvn clean verify -Dwebdriver.driver=firefox -Dheadless.mode=false -q
 
 ## 4. Información adicional
 
-**Reportes:** Se genera reportes en cucumber detallados de las pruebas ejecutadas, que puedes revisar para obtener información sobre el estado de cada prueba, los reportes se encuentran en el directorio **target/cucumber-reports/cucumber.html** dentro de tu proyecto.
+**Reportes** 
+
+Se genera reportes en cucumber detallados de las pruebas ejecutadas, que puedes revisar para obtener información sobre el estado de cada prueba, los reportes se encuentran en el directorio **target/cucumber-reports/cucumber.html** dentro de tu proyecto.
 
 **Ejecución de pruebas en CI**
 
