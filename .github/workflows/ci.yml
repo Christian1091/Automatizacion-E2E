@@ -20,17 +20,6 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
 
-      - name: Remove firefox
-        run: sudo apt-get remove -y firefox || true
-
-      - name: Install Firefox
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y firefox
-
-      - name: Firefox version
-        run: firefox --version
-
       - name: Cache Maven dependencies
         uses: actions/cache@v4
         with:
@@ -39,6 +28,8 @@ jobs:
 
       - name: Run tests
         run: mvn clean verify -Dwebdriver.driver=chrome -Dheadless.mode=true -q
+        env:
+          CHROME_DISABLE_PASSWORD_MANAGER: true
 
       - name: Serenity Report
         uses: actions/upload-artifact@v4
