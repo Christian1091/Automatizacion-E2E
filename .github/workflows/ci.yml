@@ -43,8 +43,11 @@ jobs:
       - name: Debug full environment
         run: |
             echo "HEADLESS=$HEADLESS"
-            echo "webdriver.driver=$WEBDRIVER_DRIVER"
+            echo "webdriver.driver=$webdriver.driver"
             mvn -q dependency:tree | grep serenity || true
+        env:
+          HEADLESS: "true"
+          webdriver.driver: "firefox"
 
       #- name: Cache Maven dependencies
         #  uses: actions/cache@v4
