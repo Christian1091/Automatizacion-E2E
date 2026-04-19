@@ -50,7 +50,7 @@ mvn clean verify -Dwebdriver.driver=firefox -Dheadless.mode=false -q
 
 ## 4. Información adicional
 
-**- Reportes:**Se genera reportes en cucumber detallados de las pruebas ejecutadas, que puedes revisar para obtener información sobre el estado de cada prueba, los reportes se encuentran en el directorio **target/cucumber-reports/cucumber.html** dentro de tu proyecto.
+**Reportes:** Se genera reportes en cucumber detallados de las pruebas ejecutadas, que puedes revisar para obtener información sobre el estado de cada prueba, los reportes se encuentran en el directorio **target/cucumber-reports/cucumber.html** dentro de tu proyecto.
 
 **Ejecución de pruebas en CI**
 
