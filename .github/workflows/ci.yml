@@ -23,11 +23,6 @@ jobs:
       - name: Remove firefox
         run: sudo apt-get remove -y firefox || true
 
-      - name: Install Firefox ESR
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y firefox-esr
-
       - name: Firefox version
         run: firefox --version
 
